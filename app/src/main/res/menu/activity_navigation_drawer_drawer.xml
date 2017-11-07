@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/iRutaBello"
+            android:icon="@drawable/ic_ruta_icon"
+            android:title="@string/rutabello" />
+    </group>
+
+    <item android:title="Comunicación">
+        <menu>
+            <item
+                android:id="@+id/iCuadrar"
+                android:icon="@drawable/ic_cuadrar_icon"
+                android:title="@string/cuadrar" />
+            <item
+                android:id="@+id/iSincronizar"
+                android:icon="@drawable/ic_sincronizar_icon"
+                android:title="@string/sincronizar" />
+        </menu>
+    </item>
+
+    <item android:title="Cuenta">
+    <menu>
+        <item
+            android:id="@+id/iInfoApp"
+            android:icon="@drawable/ic_infoapp_icon"
+            android:title="@string/infoapp" />
+        <item
+            android:id="@+id/iCerrar"
+            android:icon="@drawable/ic_cerrarsesion_icon"
+            android:title="@string/cerrar" />
+    </menu>
+    </item>
+
+</menu>
