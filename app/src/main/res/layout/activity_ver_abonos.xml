@@ -1,9 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.wilderarias.smarta2.ruta.VerAbonosActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        >
+
+        <TextView
+            android:id="@+id/tNombreC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tValor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tNombreC"
+            android:text="@string/valorventa"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tValorVenta"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tNombreC"
+            android:layout_toRightOf="@id/tValor"
+            android:gravity="center"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tSaldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tNombreC"
+            android:layout_toRightOf="@id/tValorVenta"
+            android:text="@string/saldo"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tSaldoFactura"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tNombreC"
+            android:gravity="center"
+            android:layout_toRightOf="@id/tSaldo"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tfecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tValor"
+            android:text="@string/fechafactura"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tFechaFactura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tSaldo"
+            android:layout_toRightOf="@id/tfecha"
+            android:gravity="center"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/red">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="@string/tituloAbonosFactura"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="bold"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:text="@string/fecha"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"
+                android:text="@string/abono"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lAbonos"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </ListView>
+</LinearLayout>

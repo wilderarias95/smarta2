@@ -64,7 +64,6 @@ public class InventarioFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot articuloProducto : dataSnapshot.getChildren()) {
                     if ((long) articuloProducto.child("cantidadDisponible").getValue() != 0) {
-                        Log.i("onDataChange1","Obteniendo data");
                         data.add(articuloProducto.getValue(InventarioData.class));
                     }
                     Collections.sort(data, new Comparator<InventarioData>() {
@@ -87,12 +86,10 @@ public class InventarioFragment extends Fragment {
         TimerTask timerTask=new TimerTask() {
             @Override
             public void run() {
-                Log.i("timer","Esperando que termine de cargar data");
                 myRef2.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (int j = 0; j < data.size(); j++) {
-                            Log.i("onDataChange2","Obteniendo Producto");
                             for (DataSnapshot producto : dataSnapshot.getChildren()) {
                                 String codigoP=producto.child("codigoP").getValue().toString();
                                 if (Objects.equals(codigoP,data.get(j).getCodigoP())) {
@@ -113,7 +110,7 @@ public class InventarioFragment extends Fragment {
                 });
             }
         };
-        timer.schedule(timerTask,2000);
+        timer.schedule(timerTask,1000);
 
       /*  adaptadorInventario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,8 +118,6 @@ public class InventarioFragment extends Fragment {
                Toast.makeText(getContext(), "Presionado:" + recyclerView.getChildPosition(v), Toast.LENGTH_SHORT).show();
             }
         });*/
-
-        Log.i("onCreateView","Saliendo");
         return view;
     }
 }

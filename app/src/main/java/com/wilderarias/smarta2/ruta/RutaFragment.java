@@ -2,7 +2,6 @@ package com.wilderarias.smarta2.ruta;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +16,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 import com.wilderarias.smarta2.R;
 
 import java.util.ArrayList;
@@ -57,7 +57,6 @@ public class RutaFragment extends Fragment {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    Log.i("onDataChange1", "venta");
                     data.add(userSnapshot.getValue(RutaData.class));
                 }
             }
@@ -78,6 +77,8 @@ public class RutaFragment extends Fragment {
                             data.get(i).setNombreC(clienteSnapshot.child("nombreC").getValue().toString());
                             data.get(i).setApellidoC(clienteSnapshot.child("apellidoC").getValue().toString());
                             data.get(i).setComentarioC(clienteSnapshot.child("comentarioC").getValue().toString());
+                            data.get(i).setDireccionC(clienteSnapshot.child("direccionC").getValue().toString());
+                            data.get(i).setTelefonoC((long)clienteSnapshot.child("telefonoC").getValue());
                         }
                     }
                 }
@@ -101,7 +102,10 @@ public class RutaFragment extends Fragment {
             public void onClick(View v) {
                 //Toast.makeText(getContext(), "click sobre" + recyclerView.getChildPosition(v), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), DetalleFacturaActivity.class);
-                intent.putExtra("idFactura",data.get(recyclerView.getChildPosition(v)).getIdFacturaVenta());
+                Gson gson=new Gson();
+                String gsonData=gson.toJson(data.get(recyclerView.getChildPosition(v)));
+               // intent.putExtra("idFactura",data.get(recyclerView.getChildPosition(v)).getIdFacturaVenta());
+                intent.putExtra("data",gsonData);
                 startActivity(intent);
             }
         });

@@ -12,17 +12,19 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".main.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".main.NavigationDrawerActivity"
             android:label="@string/title_activity_navigation_drawer"

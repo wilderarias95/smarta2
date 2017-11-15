@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -14,16 +16,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 import com.wilderarias.smarta2.R;
+
+import java.util.Objects;
 
 public class DetalleFacturaActivity extends AppCompatActivity {
 
-    long idFacturaVenta = -1;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference myRef;
-    private RutaData rutaData=new RutaData();
-    private TextView tPosRuta, tNombreC, tIdent, tDireccion, tTelefono, tFechaFactura, tValorVenta
-            , tCuota, tLapso, tComentario, tSaldo, tSaldoAtrasado, tCuotasAbonadas, tCuotasAtrasadas;
+    private RutaData rutaData = new RutaData();
+    private TextView tPosRuta, tNombreC, tIdent, tDireccion, tTelefono, tFechaFactura
+            , tValorVenta, tCuota, tLapso, tComentario, tSaldo, tSaldoAtrasado
+            , tCuotasAbonadas, tCuotasAtrasadas;
+
+    private Button bProductos,bCuotasAbo;
 
     public DetalleFacturaActivity() {
     }
@@ -33,17 +40,8 @@ public class DetalleFacturaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_factura);
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-
-        if (getIntent() != null) {
-            idFacturaVenta = getIntent().getLongExtra("idFactura", -1);
-        }
-
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = firebaseDatabase.getReference().child("venta");
+       // firebaseDatabase = FirebaseDatabase.getInstance();
+        //myRef = firebaseDatabase.getReference().child("venta");
 
         tPosRuta = (TextView) findViewById(R.id.tPosRuta);
         tNombreC = findViewById(R.id.tNombreC);
@@ -59,69 +57,70 @@ public class DetalleFacturaActivity extends AppCompatActivity {
         tSaldoAtrasado = findViewById(R.id.tSaldoAtrasado);
         tCuotasAbonadas = findViewById(R.id.tCuotasAbon);
         tCuotasAtrasadas = findViewById(R.id.tCuotasAtras);
+        bCuotasAbo=findViewById(R.id.bCuotasAbon);
+        bProductos=findViewById(R.id.bProductos);
 
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("v" + (idFacturaVenta + 1)).exists()) {
-                    rutaData = dataSnapshot.child("v" + (idFacturaVenta + 1)).getValue(RutaData.class);
-                    Log.i("rutaData",rutaData.getIdCliente());
-                }
-            }
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+        if (getIntent() != null) {
+            //idFacturaVenta = getIntent().getLongExtra("idFactura", -1);
+            Log.i("DetalleFacturaActivity","Recibiendo datos de RutaFragment");
+            String jsonData = getIntent().getStringExtra("data");
+            Gson gson=new Gson();
+            rutaData =gson.fromJson(jsonData,RutaData.class);
+            String pos=String.valueOf(rutaData.getPos());
+            Log.i("pos",pos);
+        }
 
-            }
-        });
-
-            tIdent.setText(rutaData.getIdCliente());
-        //tIdent.setText(rutaData.getIdCliente());
-/*
-        myRef=firebaseDatabase.getReference().child("cliente");
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot clienteSnapshot : dataSnapshot.getChildren()) {
-                    String idUsu = clienteSnapshot.child("idCliente").getValue().toString();
-                    if (Objects.equals(idUsu, rutaData.getIdCliente())) {
-                        rutaData.setNombreC(clienteSnapshot.child("nombreC").getValue().toString());
-                        rutaData.setApellidoC(clienteSnapshot.child("apellidoC").getValue().toString());
-                        rutaData.setComentarioC(clienteSnapshot.child("comentarioC").getValue().toString());
-                        rutaData.setTelefonoC((long) clienteSnapshot.child("telefonoC").getValue());
-                        rutaData.setDireccionC(clienteSnapshot.child("direccionC").getValue().toString());
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-        tPosRuta.setText(String.valueOf(rutaData.getPos()));
-        tNombreC.setText(rutaData.getNombreC()+""+rutaData.getApellidoC());
+        tPosRuta.setText(""+(rutaData.getPos()+1));
+        tSaldo.setText(String.valueOf(rutaData.getSaldoCredito()));
+        tNombreC.setText(rutaData.getNombreC() + " " + rutaData.getApellidoC());
         tIdent.setText(rutaData.getIdCliente());
         tDireccion.setText(rutaData.getDireccionC());
-        tTelefono.setText(String.valueOf(rutaData.getTelefonoC()));
-        tFechaFactura.setText(""+rutaData.getDiaRegistroV()+"/"+rutaData.getMesRegistroV()+"/"+rutaData.getAnoRegistroV());
+        tFechaFactura.setText(rutaData.getDiaRegistroV() + "/" + rutaData.getMesRegistroV() + "/" + rutaData.getAnoRegistroV());
         tValorVenta.setText(String.valueOf(rutaData.getValorVenta()));
+        tCuota.setText(String.valueOf(rutaData.getValorVenta() / rutaData.getDiasCredito()));
+        tTelefono.setText(String.valueOf(rutaData.getTelefonoC()));
         tLapso.setText(String.valueOf(rutaData.getDiasCredito()));
-        tCuota.setText(String.valueOf(rutaData.getValorVenta()/rutaData.getDiasCredito()));
         tComentario.setText(rutaData.getComentarioC());
-        tSaldo.setText(String.valueOf(rutaData.getSaldoCredito())); */
+
+        float numAbonos=(float)(rutaData.getValorVenta()-rutaData.getSaldoCredito())/(rutaData.getValorVenta()/rutaData.getDiasCredito());
+        tCuotasAbonadas.setText(String.format("%.2f",numAbonos));
+
+        bCuotasAbo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getApplicationContext(),VerAbonosActivity.class);
+                intent.putExtra("nombreC",rutaData.getNombreC()+" "+rutaData.getApellidoC());
+                String fecha=""+rutaData.getDiaRegistroV()+"/"+rutaData.getMesRegistroV()+"/"+rutaData.getAnoRegistroV();
+                intent.putExtra("fechaFactura",fecha);
+                intent.putExtra("valorV",rutaData.getValorVenta());
+                intent.putExtra("saldoV",rutaData.getSaldoCredito());
+                intent.putExtra("idFactura",rutaData.getIdFacturaVenta());
+                startActivity(intent);
+            }
+        });
+
+        bProductos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DetalleFacturaActivity.this,VerProductosActivity.class);
+                intent.putExtra("idFactura",rutaData.getIdFacturaVenta());
+                startActivity(intent);
+            }
+        });
 
 
-
-    }
+ }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_detalle_factura, menu);
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -130,13 +129,18 @@ public class DetalleFacturaActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.actCliente:
                 intent = new Intent(DetalleFacturaActivity.this, ActualizarClienteActivity.class);
+                intent.putExtra("idCliente",rutaData.getIdCliente());
                 startActivity(intent);
                 return true;
             case R.id.verProductos:
-
+                intent=new Intent(DetalleFacturaActivity.this,VerProductosActivity.class);
+                intent.putExtra("idFactura",rutaData.getIdFacturaVenta());
+                startActivity(intent);
                 return true;
             case R.id.verAbononos:
-
+                intent=new Intent(DetalleFacturaActivity.this,VerAbonosActivity.class);
+                intent.putExtra("idFactura",rutaData.getIdFacturaVenta());
+                startActivity(intent);
                 return true;
             case R.id.nuevaVenta:
                 intent = new Intent(DetalleFacturaActivity.this, IngresarVentaActivity.class);

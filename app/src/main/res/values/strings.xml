@@ -30,9 +30,9 @@
     <string name="lapso">Lapso:</string>
     <string name="comentario">Comentario:</string>
     <string name="saldo">Saldo:</string>
-    <string name="saldoatrasado">Saldo Atrasado:</string>
+    <string name="saldoatrasado">Saldo Atra:</string>
     <string name="cuotasabonadas">Abonos</string>
-    <string name="cuotasatrasadas">Cuotas Atrasadas:</string>
+    <string name="cuotasatrasadas">Cuotas Atra:</string>
     <string name="productos">Productos</string>
     <string name="detallefact">Factura</string>
     <string name="aceptar">Aceptar</string>
@@ -41,4 +41,7 @@
     <string name="nombre">Nombre:</string>
     <string name="apellido">Apellido:</string>
     <string name="productosventa">Productos Venta</string>
+    <string name="tituloAbonosFactura">Abonos a la Factura</string>
+    <string name="fecha">Fecha</string>
+    <string name="abono">Abono</string>
 </resources>

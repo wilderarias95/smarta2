@@ -14,12 +14,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="#"
             android:layout_marginRight="10dp"
             android:textSize="40sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:id="@+id/tposRuta"/>
+            android:id="@+id/tPosRuta"
+            android:hint="#"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,13 +29,11 @@
             android:id="@+id/tNombreC"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nombre Cliente"
             android:textSize="20sp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Documento identificacion"
             android:textSize="20sp"
             android:id="@+id/tIdentt"
             />
@@ -58,7 +56,6 @@
             android:id="@+id/tDireccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="calle 4"
             android:textSize="20sp"/>
     </LinearLayout>
 
@@ -78,7 +75,6 @@
             android:id="@+id/tTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="1234"
             android:textSize="20sp"/>
     </LinearLayout>
 
@@ -98,7 +94,6 @@
             android:id="@+id/tFechaFactura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="12/12/11"
             android:textSize="20sp"/>
     </LinearLayout>
 
@@ -118,7 +113,6 @@
             android:id="@+id/tValorVenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="$ 32456"
             android:textSize="20sp"/>
 
         <TextView
@@ -134,7 +128,6 @@
             android:id="@+id/tCuota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="123"
             android:textSize="20sp"/>
 
         <TextView
@@ -150,7 +143,6 @@
             android:id="@+id/tLapso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="30"
             android:textSize="20sp"/>
     </LinearLayout>
 
@@ -170,7 +162,6 @@
             android:id="@+id/tComentario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Informacion Adicional del cliente,que se crea necesaria tener guardada."
             android:textSize="20sp"/>
     </LinearLayout>
 
@@ -195,7 +186,6 @@
             android:id="@+id/tSaldo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="2456"
             android:textSize="20sp"/>
 
         <TextView
@@ -211,7 +201,6 @@
             android:id="@+id/tSaldoAtrasado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="-"
             android:textSize="20sp"/>
     </LinearLayout>
 
@@ -219,6 +208,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <Button android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cuotasabonadas"
@@ -226,11 +216,11 @@
             android:textSize="15sp"
             android:id="@+id/bCuotasAbon"
             android:layout_marginRight="10dp"></Button>
+
         <TextView
             android:id="@+id/tCuotasAbon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="-"
             android:textSize="20sp"/>
 
         <TextView
@@ -246,11 +236,11 @@
             android:id="@+id/tCuotasAtras"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="-"
             android:textSize="20sp"/>
     </LinearLayout>
 
     <Button
+        android:id="@+id/bProductos"
         android:layout_marginTop="2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

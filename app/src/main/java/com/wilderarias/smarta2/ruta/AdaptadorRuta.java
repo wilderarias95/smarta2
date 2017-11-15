@@ -71,7 +71,6 @@ public class AdaptadorRuta extends RecyclerView.Adapter<AdaptadorRuta.RutaViewHo
             listener.onClick(v);
         }
     }
-
     @Override
     public boolean onLongClick(View v) {
         if (longClickListener != null) {
@@ -83,7 +82,10 @@ public class AdaptadorRuta extends RecyclerView.Adapter<AdaptadorRuta.RutaViewHo
 
     public static class RutaViewHolder extends RecyclerView.ViewHolder {
 
+
         private TextView tPosRuta, tNombre, tIdent, tFecha, tTotal, tSaldo,tComentario;
+
+
 
         public RutaViewHolder(View itemView) {
             super(itemView);
