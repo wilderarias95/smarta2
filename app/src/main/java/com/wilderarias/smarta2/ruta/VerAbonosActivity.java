@@ -24,7 +24,7 @@ import java.util.Comparator;
 public class VerAbonosActivity extends AppCompatActivity {
     private String nombreC,fechaFactura;
     private long valorV,saldoV,idFactura;
-    private TextView tNombreC,tVenta,tSaldo,tFecha;
+    private TextView tNombreC,tVenta,tSaldo,tFecha,tIdFact;
     private ListView lAbonos;
 
     private FirebaseDatabase firebaseDatabase;
@@ -41,7 +41,6 @@ public class VerAbonosActivity extends AppCompatActivity {
         actionBar.setTitle(R.string.verabonos);
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-       Log.i("DetalleFacturaActivity","ingreso");
          if(getIntent()!=null){
             nombreC=getIntent().getStringExtra("nombreC");
             valorV=getIntent().getLongExtra("valorV",-1);
@@ -55,10 +54,13 @@ public class VerAbonosActivity extends AppCompatActivity {
         tNombreC=findViewById(R.id.tNombreC);
         tFecha=findViewById(R.id.tFechaFactura);
         lAbonos=findViewById(R.id.lAbonos);
+        tIdFact=findViewById(R.id.tIdFact);
+
         tNombreC.setText(nombreC);
         tVenta.setText(String.valueOf(valorV));
         tSaldo.setText(String.valueOf(saldoV));
         tFecha.setText(fechaFactura);
+        tIdFact.setText(String.valueOf(idFactura));
 
         adaptadorAbonos=new AdaptadorAbonos(getApplicationContext(),abonosData);
 
@@ -72,7 +74,6 @@ public class VerAbonosActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot abonosSnapshot:dataSnapshot.getChildren()) {
                     long id= (long) abonosSnapshot.child("idFacturaVenta").getValue();
-                    Log.i("DetalleFacturaActivity",""+id);
                     if (id==idFactura){
                     abonosData.add(abonosSnapshot.getValue(AbonosData.class));
                     }

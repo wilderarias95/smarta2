@@ -44,4 +44,10 @@
     <string name="tituloAbonosFactura">Abonos a la Factura</string>
     <string name="fecha">Fecha</string>
     <string name="abono">Abono</string>
+    <string name="codigofactura">Codigo factura:</string>
+    <string name="tituloProductoFactura">Productos factura</string>
+    <string name="codigo">Codigo</string>
+    <string name="nombrep">Nombre</string>
+    <string name="cantidad">Cantidad</string>
+    <string name="valor">Valor</string>
 </resources>
