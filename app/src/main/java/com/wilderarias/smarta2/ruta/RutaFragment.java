@@ -33,6 +33,7 @@ public class RutaFragment extends Fragment {
     private ArrayList<RutaData> data = new ArrayList<RutaData>();
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference myRef, myRef2;
+    AdaptadorRuta rutaAdaptadorRuta;
 
     public RutaFragment() {
         // Required empty public constructor
@@ -42,13 +43,14 @@ public class RutaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        Log.i("onCreateView","rutaFragament");
         View view = inflater.inflate(R.layout.ruta_fragment_ruta, container, false);
         recyclerView = view.findViewById(R.id.listRuta);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         myRef = firebaseDatabase.getReference().child("venta");
         myRef2 = firebaseDatabase.getReference().child("cliente");
-        final AdaptadorRuta rutaAdaptadorRuta = new AdaptadorRuta(data);
+        rutaAdaptadorRuta = new AdaptadorRuta(data);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(rutaAdaptadorRuta);
@@ -78,7 +80,7 @@ public class RutaFragment extends Fragment {
                             data.get(i).setApellidoC(clienteSnapshot.child("apellidoC").getValue().toString());
                             data.get(i).setComentarioC(clienteSnapshot.child("comentarioC").getValue().toString());
                             data.get(i).setDireccionC(clienteSnapshot.child("direccionC").getValue().toString());
-                            data.get(i).setTelefonoC((long)clienteSnapshot.child("telefonoC").getValue());
+                            data.get(i).setTelefonoC((long) clienteSnapshot.child("telefonoC").getValue());
                         }
                     }
                 }
@@ -100,24 +102,41 @@ public class RutaFragment extends Fragment {
         rutaAdaptadorRuta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(getContext(), "click sobre" + recyclerView.getChildPosition(v), Toast.LENGTH_SHORT).show();
+
+                Log.i("click", "YES");
                 Intent intent = new Intent(getContext(), DetalleFacturaActivity.class);
-                Gson gson=new Gson();
-                String gsonData=gson.toJson(data.get(recyclerView.getChildPosition(v)));
-               // intent.putExtra("idFactura",data.get(recyclerView.getChildPosition(v)).getIdFacturaVenta());
-                intent.putExtra("data",gsonData);
+                Gson gson = new Gson();
+                String gsonData = gson.toJson(data.get(recyclerView.getChildPosition(v)));
+                // intent.putExtra("idFactura",data.get(recyclerView.getChildPosition(v)).getIdFacturaVenta());
+                intent.putExtra("data", gsonData);
                 startActivity(intent);
+
             }
         });
 
         rutaAdaptadorRuta.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Toast.makeText(getContext(), "LongClick sobre" + recyclerView.getChildPosition(v), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getContext(), "LongClick sobre" + recyclerView.getChildPosition(v), Toast.LENGTH_SHORT).show();
+                OpcionesRutaDialogFragment dialog = new OpcionesRutaDialogFragment();
+                dialog.show(getFragmentManager(), "opcionesruta");
                 return true;
             }
         });
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("onResume","rutaFragament");
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.i("onStop","rutaFragament");
     }
 }
 

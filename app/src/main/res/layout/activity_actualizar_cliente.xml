@@ -24,7 +24,7 @@
             android:id="@+id/eDireccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="calle 4" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -43,8 +43,7 @@
         <EditText
             android:id="@+id/eTelefono"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="1234" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -64,7 +63,7 @@
             android:id="@+id/eComentario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Informacion adicional cliente" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -75,20 +74,24 @@
         android:weightSum="2">
 
         <Button
+            android:id="@+id/bAceptar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:text="@string/aceptar"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:onClick="click"/>
 
         <Button
+            android:id="@+id/bCancelar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:text="@string/cancelar"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:onClick="click"/>
     </LinearLayout>
 </LinearLayout>

@@ -6,18 +6,18 @@ package com.wilderarias.smarta2.ruta;
 
 public class ProductosData {
     private String codigoP,nombreP;
-    private long cantidadP,codigoAP,idFacturaVenta,idSucursal,numerP,valorNeto;
+    private long cantidadP,codigoAP,idFacturaVenta,idSucursal,numeroP,valorNeto;
 
     public ProductosData() {
     }
 
-    public ProductosData(String codigoP, long cantidadP, long codigoAP, long idFacturaVenta, long idSucursal, long numerP) {
+    public ProductosData(String codigoP, long cantidadP, long codigoAP, long idFacturaVenta, long idSucursal, long numeroP) {
         this.codigoP = codigoP;
         this.cantidadP = cantidadP;
         this.codigoAP = codigoAP;
         this.idFacturaVenta = idFacturaVenta;
         this.idSucursal = idSucursal;
-        this.numerP = numerP;
+        this.numeroP = numeroP;
     }
 
     public String getNombreP() {
@@ -76,11 +76,11 @@ public class ProductosData {
         this.idSucursal = idSucursal;
     }
 
-    public long getNumerP() {
-        return numerP;
+    public long getNumeroP() {
+        return numeroP;
     }
 
-    public void setNumerP(long numerP) {
-        this.numerP = numerP;
+    public void setNumeroP(long numeroP) {
+        this.numeroP = numeroP;
     }
 }

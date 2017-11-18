@@ -117,19 +117,31 @@ public class DetalleFacturaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         Intent intent;
+        String fecha = "" + rutaData.getDiaRegistroV() + "/" + rutaData.getMesRegistroV() + "/" + rutaData.getAnoRegistroV();
+
         switch (item.getItemId()) {
             case R.id.actCliente:
                 intent = new Intent(DetalleFacturaActivity.this, ActualizarClienteActivity.class);
                 intent.putExtra("idCliente", rutaData.getIdCliente());
+                intent.putExtra("direccion",rutaData.getDireccionC());
+                intent.putExtra("telefono",rutaData.getTelefonoC());
+                intent.putExtra("comentario",rutaData.getComentarioC());
                 startActivity(intent);
                 return true;
             case R.id.verProductos:
                 intent = new Intent(DetalleFacturaActivity.this, VerProductosActivity.class);
                 intent.putExtra("idFactura", rutaData.getIdFacturaVenta());
+                intent.putExtra("nombreC", rutaData.getNombreC() + " " + rutaData.getApellidoC());
+                intent.putExtra("fechaFactura", fecha);
+                intent.putExtra("valorV", rutaData.getValorVenta());
                 startActivity(intent);
                 return true;
             case R.id.verAbononos:
                 intent = new Intent(DetalleFacturaActivity.this, VerAbonosActivity.class);
+                intent.putExtra("nombreC", rutaData.getNombreC() + " " + rutaData.getApellidoC());
+                intent.putExtra("fechaFactura", fecha);
+                intent.putExtra("valorV", rutaData.getValorVenta());
+                intent.putExtra("saldoV", rutaData.getSaldoCredito());
                 intent.putExtra("idFactura", rutaData.getIdFacturaVenta());
                 startActivity(intent);
                 return true;

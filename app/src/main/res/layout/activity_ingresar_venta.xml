@@ -9,9 +9,9 @@
     tools:context="com.wilderarias.smarta2.ruta.IngresarVentaActivity">
 
     <TextView
+        android:id="@+id/tposRuta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="#"
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="30sp"/>
@@ -31,8 +31,7 @@
         <EditText
             android:id="@+id/eCedula"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="1234" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,8 +50,7 @@
         <EditText
             android:id="@+id/eNombre"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Carlos" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
@@ -72,7 +70,7 @@
             android:id="@+id/eApellido"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Restrepo" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -92,7 +90,7 @@
             android:id="@+id/eDireccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="calle 4" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -112,7 +110,7 @@
             android:id="@+id/eTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="124" />
+          />
     </LinearLayout>
 
     <LinearLayout
@@ -131,8 +129,7 @@
         <EditText
             android:id="@+id/eComentario"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="cerca Iglesia jesuitas" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <View

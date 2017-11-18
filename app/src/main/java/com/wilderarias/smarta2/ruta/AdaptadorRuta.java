@@ -76,7 +76,7 @@ public class AdaptadorRuta extends RecyclerView.Adapter<AdaptadorRuta.RutaViewHo
         if (longClickListener != null) {
             longClickListener.onLongClick(v);
         }
-        return false;
+        return true;
     }
 
 

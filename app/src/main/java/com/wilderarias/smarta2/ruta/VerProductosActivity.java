@@ -17,6 +17,8 @@ import com.wilderarias.smarta2.R;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class VerProductosActivity extends AppCompatActivity {
 
@@ -55,10 +57,15 @@ public class VerProductosActivity extends AppCompatActivity {
         tValorVenta.setText(String.valueOf(valorVenta));
         tFechaFactura.setText(fechaFactura);
 
+        final AdaptadorProductos adaptadorProductos=new AdaptadorProductos(getApplicationContext(),productosData);
+
+        lProd.setAdapter(adaptadorProductos);
+
         firebaseDatabase=FirebaseDatabase.getInstance();
         myRef=firebaseDatabase.getReference().child("productos_venta");
         myRef2=firebaseDatabase.getReference().child("producto");
         myRef3=firebaseDatabase.getReference().child("articulo_producto");
+        Timer timer=new Timer();
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -77,44 +84,53 @@ public class VerProductosActivity extends AppCompatActivity {
             }
         });
 
-        myRef2.addValueEventListener(new ValueEventListener() {
+
+        TimerTask timerTask=new TimerTask() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (int i=0;i<productosData.size();i++){
-                    for (DataSnapshot nomProSnapshot:dataSnapshot.getChildren() ){
-                        Log.i("VerProductosActivity","myRef2");
-                        if (Objects.equals(nomProSnapshot.child("codigoP").getValue().toString(),productosData.get(i).getCodigoP())){
-                            productosData.get(i).setNombreP(nomProSnapshot.child("nombreP").getValue().toString());
+            public void run() {
+
+                myRef2.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (int i=0;i<productosData.size();i++){
+                            for (DataSnapshot nomProSnapshot:dataSnapshot.getChildren() ){
+                                Log.i("VerProductosActivity","myRef2");
+                                if (Objects.equals(nomProSnapshot.child("codigoP").getValue().toString(),productosData.get(i).getCodigoP())){
+                                    productosData.get(i).setNombreP(nomProSnapshot.child("nombreP").getValue().toString());
+                                }
+                            }
                         }
                     }
-                }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
-
-        myRef3.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (int j=0;j<productosData.size();j++){
-                    for (DataSnapshot valProSnapshot:dataSnapshot.getChildren() ){
-                        Log.i("VerProductosActivity","myRef3");
-                        if (Objects.equals(valProSnapshot.child("codigoP").getValue().toString(),productosData.get(j).getCodigoP())){
-                            productosData.get(j).setValorNeto((long)valProSnapshot.child("valorNeto").getValue());
-                        }
                     }
-                }
+                });
+
+                myRef3.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (int j=0;j<productosData.size();j++){
+                            for (DataSnapshot valProSnapshot:dataSnapshot.getChildren() ){
+                                Log.i("VerProductosActivity","myRef3");
+                                if (Objects.equals(valProSnapshot.child("codigoP").getValue().toString(),productosData.get(j).getCodigoP())){
+                                    productosData.get(j).setValorNeto((long)valProSnapshot.child("valorNeto").getValue());
+                                }
+                            }
+                        }
+                        adaptadorProductos.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
             }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
+        };
+        timer.schedule(timerTask,400);
     }
 
     @Override
