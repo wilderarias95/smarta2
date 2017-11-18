@@ -110,6 +110,7 @@ public class RutaFragment extends Fragment {
                 // intent.putExtra("idFactura",data.get(recyclerView.getChildPosition(v)).getIdFacturaVenta());
                 intent.putExtra("data", gsonData);
                 startActivity(intent);
+                //hola
 
             }
         });
