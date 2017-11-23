@@ -1,4 +1,4 @@
-package com.wilderarias.smarta2.ruta;
+package com.wilderarias.smarta2.detalle;
 
 import android.app.TaskStackBuilder;
 import android.support.v7.app.ActionBar;
@@ -61,6 +61,7 @@ public class ActualizarClienteActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case android.R.id.home:
                 onBackPressed();
+
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -90,6 +91,7 @@ public class ActualizarClienteActivity extends AppCompatActivity {
                                 break;
                             }
                         }
+
                     }
 
                     @Override
@@ -97,7 +99,8 @@ public class ActualizarClienteActivity extends AppCompatActivity {
 
                     }
                 });
-
+                setResult(RESULT_OK);
+                finish();
                 break;
             case R.id.bCancelar:
                 onBackPressed();

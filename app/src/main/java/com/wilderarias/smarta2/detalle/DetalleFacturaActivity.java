@@ -1,26 +1,37 @@
-package com.wilderarias.smarta2.ruta;
+package com.wilderarias.smarta2.detalle;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.wilderarias.smarta2.R;
+import com.wilderarias.smarta2.ruta.IngresarVentaActivity;
+import com.wilderarias.smarta2.ruta.RutaData;
+
+import java.util.Objects;
 
 public class DetalleFacturaActivity extends AppCompatActivity {
 
 
     private RutaData rutaData = new RutaData();
     private TextView tPosRuta, tNombreC, tIdent, tDireccion, tTelefono, tFechaFactura, tValorVenta, tCuota, tLapso, tComentario, tSaldo, tSaldoAtrasado, tCuotasAbonadas, tCuotasAtrasadas, tIdFact;
-
     private Button bProductos, bCuotasAbo;
+
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference myRef;
 
     public DetalleFacturaActivity() {
     }
@@ -114,6 +125,38 @@ public class DetalleFacturaActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        firebaseDatabase=FirebaseDatabase.getInstance();
+        if (requestCode==1 && resultCode==RESULT_OK){
+            Toast.makeText(this,"back from ActualizarCli",Toast.LENGTH_SHORT).show();
+            myRef=firebaseDatabase.getReference().child("cliente");
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot clienteSnapshot : dataSnapshot.getChildren()) {
+                        String idUsu = clienteSnapshot.child("idCliente").getValue().toString();
+                        if (Objects.equals(idUsu, rutaData.getIdCliente())) {
+                            rutaData.setDireccionC(clienteSnapshot.child("direccionC").getValue().toString());
+                            rutaData.setTelefonoC((long) clienteSnapshot.child("telefonoC").getValue());
+                            rutaData.setComentarioC(clienteSnapshot.child("comentarioC").getValue().toString());
+                        }
+                    }
+                    tDireccion.setText(rutaData.getDireccionC());
+                    tTelefono.setText(String.valueOf(rutaData.getTelefonoC()));
+                    tComentario.setText(rutaData.getComentarioC());
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         Intent intent;
@@ -126,7 +169,7 @@ public class DetalleFacturaActivity extends AppCompatActivity {
                 intent.putExtra("direccion",rutaData.getDireccionC());
                 intent.putExtra("telefono",rutaData.getTelefonoC());
                 intent.putExtra("comentario",rutaData.getComentarioC());
-                startActivity(intent);
+                startActivityForResult(intent,1);  //1:actualizarcliente
                 return true;
             case R.id.verProductos:
                 intent = new Intent(DetalleFacturaActivity.this, VerProductosActivity.class);

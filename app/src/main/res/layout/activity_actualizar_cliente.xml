@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_margin="16dp"
     android:orientation="vertical"
-    tools:context="com.wilderarias.smarta2.ruta.ActualizarClienteActivity">
+    tools:context="com.wilderarias.smarta2.detalle.ActualizarClienteActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -79,19 +79,21 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:text="@string/aceptar"
             android:textSize="20sp"
-            android:onClick="click"/>
+            android:onClick="click"
+            android:textColor="@color/white"/>
 
         <Button
             android:id="@+id/bCancelar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:text="@string/cancelar"
             android:textSize="20sp"
-            android:onClick="click"/>
+            android:onClick="click"
+            android:textColor="@color/white"/>
     </LinearLayout>
 </LinearLayout>

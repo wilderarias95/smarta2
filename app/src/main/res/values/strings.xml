@@ -50,4 +50,5 @@
     <string name="nombrep">Nombre</string>
     <string name="cantidad">Cantidad</string>
     <string name="valor">Valor</string>
+    <string name="msgvalorvalido">Ingrese un valor valido</string>
 </resources>

@@ -2,41 +2,42 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_margin="8dp"
     android:orientation="vertical"
-    android:layout_height="match_parent"
-    tools:context="com.wilderarias.smarta2.ruta.DetalleFacturaActivity">
+    tools:context="com.wilderarias.smarta2.detalle.DetalleFacturaActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
+            android:id="@+id/tPosRuta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:textSize="40sp"
+            android:hint="#"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            android:id="@+id/tPosRuta"
-            android:hint="#"/>
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-        <TextView
-            android:id="@+id/tNombreC"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:id="@+id/tIdentt"
-            />
+            <TextView
+                android:id="@+id/tNombreC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tIdentt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -44,183 +45,190 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/direccion"
-            android:textSize="20sp"
             android:layout_marginRight="10dp"
+            android:text="@string/direccion"
             android:textColor="@color/black"
-            />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tDireccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/telefono"
-            android:textSize="20sp"
             android:layout_marginRight="10dp"
+            android:text="@string/telefono"
             android:textColor="@color/black"
-            />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tTelefono"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/codigofactura"
-            android:textSize="20sp"
             android:layout_marginRight="10dp"
+            android:text="@string/codigofactura"
             android:textColor="@color/black"
-            />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tIdFact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/fechafactura"
-            android:textSize="20sp"
             android:layout_marginRight="10dp"
+            android:text="@string/fechafactura"
             android:textColor="@color/black"
-            />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tFechaFactura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/valorventa"
-            android:textSize="20sp"
             android:layout_marginRight="7dp"
+            android:text="@string/valorventa"
             android:textColor="@color/black"
-            />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tValorVenta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cuota"
-            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="7dp"
+            android:text="@string/cuota"
             android:textColor="@color/black"
-            />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tCuota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/lapso"
-            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="3dp"
+            android:text="@string/lapso"
             android:textColor="@color/black"
-            />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tLapso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/comentario"
-            android:textSize="20sp"
             android:layout_marginRight="10dp"
+            android:text="@string/comentario"
             android:textColor="@color/black"
-            />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tComentario"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/black"/>
+        android:background="@color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/saldo"
-        android:textSize="20sp"
-        android:layout_marginRight="10dp"
-        android:textColor="@color/black"
-        />
-        <TextView
-            android:id="@+id/tSaldo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/saldoatrasado"
-            android:textSize="20sp"
+            android:layout_marginRight="10dp"
+            android:text="@string/saldo"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tSaldo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:text="@string/saldoatrasado"
             android:textColor="@color/black"
-            />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tSaldoAtrasado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -228,42 +236,45 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <Button android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cuotasabonadas"
-            android:background="@color/colorPrimaryDark"
-            android:textSize="15sp"
+        <Button
             android:id="@+id/bCuotasAbon"
-            android:layout_marginRight="10dp"></Button>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorPrimaryDark"
+            android:text="@string/cuotasabonadas"
+            android:textColor="@color/white"
+            android:textSize="15sp"></Button>
 
         <TextView
             android:id="@+id/tCuotasAbon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cuotasatrasadas"
-            android:textSize="20sp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
+            android:text="@string/cuotasatrasadas"
             android:textColor="@color/black"
-            />
+            android:textSize="20sp" />
+
         <TextView
             android:id="@+id/tCuotasAtras"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/bProductos"
-        android:layout_marginTop="2dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
         android:background="@color/colorPrimaryDark"
         android:text="@string/productos"
-        android:textSize="25sp"/>
+        android:textColor="@color/white"
+        android:textSize="25sp" />
 </LinearLayout>

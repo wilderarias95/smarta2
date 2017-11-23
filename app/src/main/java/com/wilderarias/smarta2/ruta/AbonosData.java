@@ -5,18 +5,17 @@ package com.wilderarias.smarta2.ruta;
  */
 
 public class AbonosData {
-    private long anoRegistroAC,diaRegistroAC,idFacturaVenta,idSucursal,mesRegistroAC,numeroA,valorAbono;
+    private long anoRegistroAC,diaRegistroAC,idFacturaVenta,idSucursal,mesRegistroAC,valorAbono;
 
     public AbonosData() {
     }
 
-    public AbonosData(long anoRegistroAC, long diaRegistroAC, long idFacturaVenta, long idSucursal, long mesRegistroAC, long numeroA, long valorAbono) {
+    public AbonosData(long anoRegistroAC, long diaRegistroAC, long idFacturaVenta, long idSucursal, long mesRegistroAC, long valorAbono) {
         this.anoRegistroAC = anoRegistroAC;
         this.diaRegistroAC = diaRegistroAC;
         this.idFacturaVenta = idFacturaVenta;
         this.idSucursal = idSucursal;
         this.mesRegistroAC = mesRegistroAC;
-        this.numeroA = numeroA;
         this.valorAbono = valorAbono;
     }
 
@@ -58,14 +57,6 @@ public class AbonosData {
 
     public void setMesRegistroAC(long mesRegistroAC) {
         this.mesRegistroAC = mesRegistroAC;
-    }
-
-    public long getNumeroA() {
-        return numeroA;
-    }
-
-    public void setNumeroA(long numeroA) {
-        this.numeroA = numeroA;
     }
 
     public long getValorAbono() {

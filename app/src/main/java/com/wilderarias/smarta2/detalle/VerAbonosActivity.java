@@ -1,12 +1,9 @@
-package com.wilderarias.smarta2.ruta;
+package com.wilderarias.smarta2.detalle;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Adapter;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -16,6 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.wilderarias.smarta2.R;
+import com.wilderarias.smarta2.ruta.AbonosData;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -81,7 +79,8 @@ public class VerAbonosActivity extends AppCompatActivity {
                 Collections.sort(abonosData, new Comparator<AbonosData>() {
                     @Override
                     public int compare(AbonosData o1, AbonosData o2) {
-                        return new Integer((int) o1.getNumeroA()).compareTo(new Integer((int) o2.getNumeroA()));
+                        //return new Integer((int) o1.getNumeroA()).compareTo(new Integer((int) o2.getNumeroA()));
+                            return new String(o1.getAnoRegistroAC()+"/"+o1.getMesRegistroAC()+"/"+o1.getDiaRegistroAC()).compareTo(new String(o2.getAnoRegistroAC()+"/"+o2.getMesRegistroAC()+"/"+o2.getDiaRegistroAC()));
                     }
                 });
                 adaptadorAbonos.notifyDataSetChanged();

@@ -1,4 +1,4 @@
-package com.wilderarias.smarta2.ruta;
+package com.wilderarias.smarta2.detalle;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.wilderarias.smarta2.R;
+import com.wilderarias.smarta2.ruta.AbonosData;
 
 import java.util.ArrayList;
 import java.util.List;

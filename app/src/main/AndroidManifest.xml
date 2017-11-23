@@ -33,16 +33,16 @@
         <activity android:name=".SincronizarActivity" />
         <activity android:name=".InfoAppActivity" />
         <activity
-            android:name=".ruta.DetalleFacturaActivity"
+            android:name=".detalle.DetalleFacturaActivity"
             android:label="@string/detallefact" />
         <activity
-            android:name=".ruta.ActualizarClienteActivity"
+            android:name=".detalle.ActualizarClienteActivity"
             android:label="@string/actcliente" />
         <activity
             android:name=".ruta.IngresarVentaActivity"
             android:label="@string/nuevoprestamo" />
-        <activity android:name=".ruta.VerAbonosActivity" />
-        <activity android:name=".ruta.VerProductosActivity"/>
+        <activity android:name=".detalle.VerAbonosActivity" />
+        <activity android:name=".detalle.VerProductosActivity"/>
     </application>
 
 </manifest>

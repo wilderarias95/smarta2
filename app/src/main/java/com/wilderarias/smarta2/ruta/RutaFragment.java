@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,6 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.wilderarias.smarta2.R;
+import com.wilderarias.smarta2.detalle.DetalleFacturaActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -119,7 +119,7 @@ public class RutaFragment extends Fragment {
             @Override
             public boolean onLongClick(View v) {
                 // Toast.makeText(getContext(), "LongClick sobre" + recyclerView.getChildPosition(v), Toast.LENGTH_SHORT).show();
-                OpcionesRutaDialogFragment dialog = new OpcionesRutaDialogFragment();
+                OpcionesRutaDialogFragment dialog = new OpcionesRutaDialogFragment(data.get(recyclerView.getChildPosition(v)).getIdFacturaVenta(),data.get(recyclerView.getChildPosition(v)).getIdSucursal());
                 dialog.show(getFragmentManager(), "opcionesruta");
                 return true;
             }

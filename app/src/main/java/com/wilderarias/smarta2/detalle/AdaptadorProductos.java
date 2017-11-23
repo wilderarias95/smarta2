@@ -1,4 +1,4 @@
-package com.wilderarias.smarta2.ruta;
+package com.wilderarias.smarta2.detalle;
 
 
 import android.content.Context;
@@ -11,8 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.wilderarias.smarta2.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

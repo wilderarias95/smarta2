@@ -1,4 +1,4 @@
-package com.wilderarias.smarta2.ruta;
+package com.wilderarias.smarta2.detalle;
 
 /**
  * Created by WilderArias on 11/15/2017.

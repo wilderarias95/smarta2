@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wilderarias.smarta2.ruta.VerAbonosActivity">
+    tools:context="com.wilderarias.smarta2.detalle.VerAbonosActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -86,14 +86,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/red">
+        android:background="@color/colorPrimaryDark">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:text="@string/tituloAbonosFactura"
             android:textSize="20sp"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"/>
         <View
             android:layout_width="match_parent"
@@ -111,15 +111,16 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:text="@string/fecha"/>
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textSize="20sp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"
                 android:text="@string/abono"/>
         </LinearLayout>

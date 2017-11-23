@@ -1,4 +1,4 @@
-package com.wilderarias.smarta2.ruta;
+package com.wilderarias.smarta2.detalle;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
