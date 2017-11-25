@@ -51,4 +51,8 @@
     <string name="cantidad">Cantidad</string>
     <string name="valor">Valor</string>
     <string name="msgvalorvalido">Ingrese un valor valido</string>
+    <string name="contacto">Contacto</string>
+    <string name="correo_compañia">Correo de compañia</string>
+    <string name="telefono_compañia">Telefono de la compañia</string>
+    <string name="version_app">Version 1.0</string>
 </resources>

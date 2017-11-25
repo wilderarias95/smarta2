@@ -10,16 +10,12 @@
             android:title="@string/rutabello" />
     </group>
 
-    <item android:title="Comunicación">
+    <item android:title="Balance">
         <menu>
             <item
                 android:id="@+id/iCuadrar"
                 android:icon="@drawable/ic_cuadrar_icon"
                 android:title="@string/cuadrar" />
-            <item
-                android:id="@+id/iSincronizar"
-                android:icon="@drawable/ic_sincronizar_icon"
-                android:title="@string/sincronizar" />
         </menu>
     </item>
 

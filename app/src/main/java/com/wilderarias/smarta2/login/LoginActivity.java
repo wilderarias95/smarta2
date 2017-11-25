@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                 //ePassword.setText(users.get(1).getNombreU());
                 if (validarUsuario() == 1) {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("nombreUsuario",sUsername);
                     startActivity(intent);
                     finish();
                 } else {

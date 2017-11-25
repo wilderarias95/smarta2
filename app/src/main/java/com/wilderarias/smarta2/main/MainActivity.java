@@ -10,14 +10,20 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.wilderarias.smarta2.cuadrar.CuadrarActivity;
 import com.wilderarias.smarta2.InfoAppActivity;
 import com.wilderarias.smarta2.login.LoginActivity;
 import com.wilderarias.smarta2.R;
-import com.wilderarias.smarta2.SincronizarActivity;
 
 public class MainActivity extends NavigationDrawerActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    PagerAdapter pagerAdapter=new PagerAdapter(getSupportFragmentManager());
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    TextView tNombreUsuario;
+    private String nombreU;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,9 @@ public class MainActivity extends NavigationDrawerActivity implements Navigation
         setSupportActionBar(toolbar);
         setTitle(R.string.app_name);
 
+        if (getIntent()!=null){
+            nombreU=getIntent().getStringExtra("nombreUsuario");
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -37,11 +46,13 @@ public class MainActivity extends NavigationDrawerActivity implements Navigation
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        PagerAdapter pagerAdapter=new PagerAdapter(getSupportFragmentManager());
-        TabLayout tabLayout=findViewById(R.id.tabs);
-        ViewPager viewPager=findViewById(R.id.container);
+        //tNombreUsuario=findViewById(R.id.tNombreUsuario);
+        //tNombreUsuario.setText(nombreU);
+        tabLayout=findViewById(R.id.tabs);
+        viewPager=findViewById(R.id.container);
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
 
     }
 
@@ -63,15 +74,11 @@ public class MainActivity extends NavigationDrawerActivity implements Navigation
         Intent intent;
 
         if (id == R.id.iRutaBello) {
-
+            viewPager.setCurrentItem(0); //Se desplaza a la vista de la rutaBello
         } else if (id == R.id.iCuadrar) {
             intent=new Intent(MainActivity.this,CuadrarActivity.class);
             startActivity(intent);
-        } else if (id == R.id.iSincronizar) {
-            //Implementar StartResultActivity;
-            intent=new Intent(MainActivity.this,SincronizarActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.iInfoApp) {
+        }  else if (id == R.id.iInfoApp) {
             intent=new Intent(MainActivity.this,InfoAppActivity.class);
             startActivity(intent);
         } else if (id == R.id.iCerrar) {

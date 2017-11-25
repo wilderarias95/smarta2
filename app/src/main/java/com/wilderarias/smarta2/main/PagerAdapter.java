@@ -49,4 +49,5 @@ public class PagerAdapter extends FragmentPagerAdapter {
             }
         return super.getPageTitle(position);
     }
+
 }

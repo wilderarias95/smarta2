@@ -30,7 +30,6 @@
             android:label="@string/title_activity_navigation_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".cuadrar.CuadrarActivity" />
-        <activity android:name=".SincronizarActivity" />
         <activity android:name=".InfoAppActivity" />
         <activity
             android:name=".detalle.DetalleFacturaActivity"

@@ -34,6 +34,7 @@ public class RutaFragment extends Fragment {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference myRef, myRef2;
     AdaptadorRuta rutaAdaptadorRuta;
+    private long cont=0,sizeVentas;
 
     public RutaFragment() {
         // Required empty public constructor
@@ -42,9 +43,9 @@ public class RutaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         Log.i("onCreateView","rutaFragament");
         View view = inflater.inflate(R.layout.ruta_fragment_ruta, container, false);
+
         recyclerView = view.findViewById(R.id.listRuta);
 
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -58,8 +59,17 @@ public class RutaFragment extends Fragment {
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                sizeVentas=dataSnapshot.getChildrenCount();
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
-                    data.add(userSnapshot.getValue(RutaData.class));
+                    if(cont<sizeVentas){
+                        data.add(userSnapshot.getValue(RutaData.class));
+                        ++cont;
+                        Log.i("RutaFragment","size:"+sizeVentas+"cont: "+cont);
+                    }else {
+                        Log.i("RutaFragment","actualizando nuevo saldo");
+                        data.get(Integer.parseInt(userSnapshot.child("pos").getValue().toString())).setSaldoCredito(Long.parseLong(userSnapshot.child("saldoCredito").getValue().toString()));
+                        rutaAdaptadorRuta.notifyDataSetChanged();
+                    }
                 }
             }
 
@@ -105,10 +115,10 @@ public class RutaFragment extends Fragment {
 
                 Log.i("click", "YES");
                 Intent intent = new Intent(getContext(), DetalleFacturaActivity.class);
-                Gson gson = new Gson();
-                String gsonData = gson.toJson(data.get(recyclerView.getChildPosition(v)));
-                // intent.putExtra("idFactura",data.get(recyclerView.getChildPosition(v)).getIdFacturaVenta());
-                intent.putExtra("data", gsonData);
+                //Gson gson = new Gson();
+                //String gsonData = gson.toJson(data.get(recyclerView.getChildPosition(v)));
+                intent.putExtra("idFactura",data.get(recyclerView.getChildPosition(v)).getIdFacturaVenta());
+                //intent.putExtra("data", gsonData);
                 startActivity(intent);
                 //hola
 
