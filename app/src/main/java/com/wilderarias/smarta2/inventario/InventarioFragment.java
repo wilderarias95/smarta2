@@ -1,6 +1,7 @@
 package com.wilderarias.smarta2.inventario;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,7 +33,6 @@ import java.util.TimerTask;
 public class InventarioFragment extends Fragment {
 
     ArrayList<InventarioData> data = new ArrayList<InventarioData>();
-    ;
     private RecyclerView recyclerView;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference myRef,myRef2;
@@ -112,12 +112,13 @@ public class InventarioFragment extends Fragment {
         };
         timer.schedule(timerTask,1000);
 
-      /*  adaptadorInventario.setOnClickListener(new View.OnClickListener() {
+        adaptadorInventario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Toast.makeText(getContext(), "Presionado:" + recyclerView.getChildPosition(v), Toast.LENGTH_SHORT).show();
+              Intent intent=new Intent(getContext(),IngresarArticulo.class);
+              startActivity(intent);
             }
-        });*/
+        });
         return view;
     }
 }

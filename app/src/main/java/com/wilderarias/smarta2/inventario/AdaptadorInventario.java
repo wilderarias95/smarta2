@@ -14,11 +14,10 @@ import java.util.List;
  * Created by WilderArias on 10/29/2017.
  */
 
-public class AdaptadorInventario extends RecyclerView.Adapter<AdaptadorInventario.InventarioViewHolder> implements View.OnClickListener,View.OnLongClickListener {
+public class AdaptadorInventario extends RecyclerView.Adapter<AdaptadorInventario.InventarioViewHolder> implements View.OnClickListener {
 
     private List<InventarioData> dataInv;
     private View.OnClickListener listener;
-    private View.OnLongClickListener longClickListener;
 
 
     public AdaptadorInventario(List<InventarioData> data){
@@ -31,7 +30,6 @@ public class AdaptadorInventario extends RecyclerView.Adapter<AdaptadorInventari
                 .inflate(R.layout.inventario_list, parent, false);
 
         itemView.setOnClickListener(this);
-        itemView.setOnLongClickListener(this);
 
         InventarioViewHolder inventarioViewHolder=new InventarioViewHolder(itemView);
         return inventarioViewHolder;
@@ -41,9 +39,7 @@ public class AdaptadorInventario extends RecyclerView.Adapter<AdaptadorInventari
         this.listener=listener;
     }
 
-    public void setOnLongClickListener(View.OnLongClickListener longClickListener) {
-        this.longClickListener = longClickListener;
-    }
+
 
     @Override
     public void onClick(View v) {
@@ -68,12 +64,6 @@ public class AdaptadorInventario extends RecyclerView.Adapter<AdaptadorInventari
     public int getItemCount() {
         return dataInv.size();
     }
-
-    @Override
-    public boolean onLongClick(View v) {
-        return false;
-    }
-
 
     public static class InventarioViewHolder extends RecyclerView.ViewHolder{
         private TextView tPosProd, tNomProd, tCodProd, tDesc, tCantDisp, tPrecProd;

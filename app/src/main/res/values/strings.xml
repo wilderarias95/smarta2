@@ -52,11 +52,17 @@
     <string name="valor">Valor</string>
     <string name="msgvalorvalido">Ingrese un valor valido</string>
     <string name="contacto">Contacto</string>
-    <string name="correo_compañia">Correo de compañia</string>
-    <string name="telefono_compañia">Telefono de la compañia</string>
+    <string name="correo_compañia">smartasoporte@gmail.com</string>
+    <string name="telefono_compañia">3043630961</string>
     <string name="version_app">Version 1.0</string>
     <string name="diasCredito">Días Cred. :</string>
     <string name="agotado">Producto agotado</string>
     <string name="cant_no_valida">Cantidad no valida</string>
     <string name="datosfaltantes">Complete todos los datos del usuario</string>
+    <string name="ingresararticulo">Ingresar Articulo</string>
+    <string name="codigo_prod">Codigo:</string>
+    <string name="descripcion">Descripción:</string>
+    <string name="valor_capital">Valor capital:</string>
+    <string name="valor_neto">Valor neto:</string>
+    <string name="prod_no_existente">Producto no existe</string>
 </resources>

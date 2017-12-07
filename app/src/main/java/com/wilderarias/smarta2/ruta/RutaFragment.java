@@ -67,7 +67,9 @@ public class RutaFragment extends Fragment {
                         Log.i("RutaFragment","size:"+sizeVentas+"cont: "+cont);
                     }else {
                         Log.i("RutaFragment","actualizando nuevo saldo");
-                        data.get(Integer.parseInt(userSnapshot.child("pos").getValue().toString())).setSaldoCredito(Long.parseLong(userSnapshot.child("saldoCredito").getValue().toString()));
+                        data.get(Integer.parseInt(userSnapshot.child("pos").getValue().toString())-1).
+                                setSaldoCredito(Long.parseLong(userSnapshot.child("saldoCredito").
+                                        getValue().toString()));
                         rutaAdaptadorRuta.notifyDataSetChanged();
                     }
                 }

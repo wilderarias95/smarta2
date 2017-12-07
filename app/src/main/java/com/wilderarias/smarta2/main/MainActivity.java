@@ -22,8 +22,6 @@ public class MainActivity extends NavigationDrawerActivity implements Navigation
     PagerAdapter pagerAdapter=new PagerAdapter(getSupportFragmentManager());
     TabLayout tabLayout;
     ViewPager viewPager;
-    TextView tNombreUsuario;
-    private String nombreU;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +30,6 @@ public class MainActivity extends NavigationDrawerActivity implements Navigation
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle(R.string.app_name);
-
-        if (getIntent()!=null){
-            nombreU=getIntent().getStringExtra("nombreUsuario");
-        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -46,8 +40,6 @@ public class MainActivity extends NavigationDrawerActivity implements Navigation
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //tNombreUsuario=findViewById(R.id.tNombreUsuario);
-        //tNombreUsuario.setText(nombreU);
         tabLayout=findViewById(R.id.tabs);
         viewPager=findViewById(R.id.container);
         viewPager.setAdapter(pagerAdapter);

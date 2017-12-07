@@ -13,7 +13,10 @@
             android:name=".SplashActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".login.LoginActivity"
@@ -23,10 +26,7 @@
             android:name=".main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".main.NavigationDrawerActivity"
@@ -52,6 +52,8 @@
         <activity android:name=".detalle.VerAbonosActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".detalle.VerProductosActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".inventario.IngresarArticulo"
             android:screenOrientation="portrait"/>
     </application>
 

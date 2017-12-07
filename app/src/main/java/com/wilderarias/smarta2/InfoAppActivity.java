@@ -12,9 +12,10 @@ public class InfoAppActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_app);
 
-        setTitle(R.string.infoapp);
         ActionBar actionBar=getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+
     }
 
     @Override

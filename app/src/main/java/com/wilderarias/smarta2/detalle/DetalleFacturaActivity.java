@@ -16,14 +16,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
 import com.wilderarias.smarta2.R;
 import com.wilderarias.smarta2.ruta.IngresarAbonoDialogFragment;
 import com.wilderarias.smarta2.ruta.IngresarVentaActivity;
 import com.wilderarias.smarta2.ruta.RutaData;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Objects;
 
 public class DetalleFacturaActivity extends AppCompatActivity {
@@ -33,8 +30,10 @@ public class DetalleFacturaActivity extends AppCompatActivity {
     private TextView tPosRuta, tNombreC, tIdent, tDireccion, tTelefono, tFechaFactura, tValorVenta, tCuota, tLapso, tComentario, tSaldo, tSaldoAtrasado, tCuotasAbonadas, tCuotasAtrasadas, tIdFact;
     private Button bProductos, bCuotasAbo;
     private long idFactura;
-    FirebaseDatabase firebaseDatabase=FirebaseDatabase.getInstance();;
-    DatabaseReference myRef,myRef2;
+    FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    ;
+    DatabaseReference myRef, myRef2;
+    int cont = 0;
 
     public DetalleFacturaActivity() {
     }
@@ -68,20 +67,26 @@ public class DetalleFacturaActivity extends AppCompatActivity {
 
 
         if (getIntent() != null) {
-           // String jsonData = getIntent().getStringExtra("data");
-            idFactura=getIntent().getLongExtra("idFactura",-1);
+            // String jsonData = getIntent().getStringExtra("data");
+            idFactura = getIntent().getLongExtra("idFactura", -1);
             //Gson gson = new Gson();
             //rutaData = gson.fromJson(jsonData, RutaData.class);
             //String pos = String.valueOf(rutaData.getPos());
         }
 
-        myRef=firebaseDatabase.getReference().child("venta");
+        myRef = firebaseDatabase.getReference().child("venta");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot ventaSnapshot:dataSnapshot.getChildren()){
-                    if(Long.parseLong(ventaSnapshot.child("idFacturaVenta").getValue().toString())==idFactura){
-                        rutaData=ventaSnapshot.getValue(RutaData.class);
+                for (DataSnapshot ventaSnapshot : dataSnapshot.getChildren()) {
+                    if (Long.parseLong(ventaSnapshot.child("idFacturaVenta").getValue().toString()) == idFactura) {
+                        if (cont == 0) {
+                            rutaData = ventaSnapshot.getValue(RutaData.class);
+                            cont++;
+                        }else{
+                            Log.i("DetalleFactura","actualizando nuevo saldo");
+                            rutaData.setSaldoCredito(Long.parseLong(ventaSnapshot.child("saldoCredito").getValue().toString()));
+                        }
                     }
                 }
                 tPosRuta.setText("" + rutaData.getPos());
@@ -101,26 +106,25 @@ public class DetalleFacturaActivity extends AppCompatActivity {
             }
         });
 
-        myRef2=firebaseDatabase.getReference().child("cliente");
+        myRef2 = firebaseDatabase.getReference().child("cliente");
         myRef2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot clienteSnapshot : dataSnapshot.getChildren()) {
-                        String idUsu = clienteSnapshot.child("idCliente").getValue().toString();
-                        if (Objects.equals(idUsu,rutaData.getIdCliente())) {
-                            rutaData.setNombreC(clienteSnapshot.child("nombreC").getValue().toString());
-                            rutaData.setApellidoC(clienteSnapshot.child("apellidoC").getValue().toString());
-                            rutaData.setComentarioC(clienteSnapshot.child("comentarioC").getValue().toString());
-                            rutaData.setDireccionC(clienteSnapshot.child("direccionC").getValue().toString());
-                            rutaData.setTelefonoC((long) clienteSnapshot.child("telefonoC").getValue());
-                        }
+                for (DataSnapshot clienteSnapshot : dataSnapshot.getChildren()) {
+                    String idUsu = clienteSnapshot.child("idCliente").getValue().toString();
+                    if (Objects.equals(idUsu, rutaData.getIdCliente())) {
+                        rutaData.setNombreC(clienteSnapshot.child("nombreC").getValue().toString());
+                        rutaData.setApellidoC(clienteSnapshot.child("apellidoC").getValue().toString());
+                        rutaData.setComentarioC(clienteSnapshot.child("comentarioC").getValue().toString());
+                        rutaData.setDireccionC(clienteSnapshot.child("direccionC").getValue().toString());
+                        rutaData.setTelefonoC((long) clienteSnapshot.child("telefonoC").getValue());
                     }
+                }
                 tNombreC.setText(rutaData.getNombreC() + " " + rutaData.getApellidoC());
                 tIdent.setText(rutaData.getIdCliente());
                 tDireccion.setText(rutaData.getDireccionC());
                 tTelefono.setText(String.valueOf(rutaData.getTelefonoC()));
                 tComentario.setText(rutaData.getComentarioC());
-
 
 
             }
@@ -162,7 +166,7 @@ public class DetalleFacturaActivity extends AppCompatActivity {
 
     }
 
-     @Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.activity_detalle_factura, menu);
         return true;
@@ -203,8 +207,8 @@ public class DetalleFacturaActivity extends AppCompatActivity {
                 return true;
             case R.id.nuevaVenta:
                 intent = new Intent(DetalleFacturaActivity.this, IngresarVentaActivity.class);
-                intent.putExtra("posRuta",rutaData.getPos());
-                intent.putExtra("idSucursal",rutaData.getIdSucursal());
+                intent.putExtra("posRuta", rutaData.getPos());
+                intent.putExtra("idSucursal", rutaData.getIdSucursal());
                 startActivity(intent);
                 return true;
             case R.id.ingresarAbono:

@@ -355,7 +355,9 @@ public class IngresarVentaActivity extends AppCompatActivity {
                                     if (contAlmacClient < 1) {
                                         Log.i("a", "creando Cli");
                                         int c = (int) contClientes + 1;
-                                        myRef.child("c" + c).setValue(clienteData);
+                                        if (opcExis==0) {
+                                            myRef.child("c" + c).setValue(clienteData);
+                                        }
                                         int v = (int) idFactura + 1;
                                         myRef4.child("v" + v).setValue(rutaData);
                                         contAlmacClient++;
