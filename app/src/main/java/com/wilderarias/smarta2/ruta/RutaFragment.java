@@ -129,7 +129,7 @@ public class RutaFragment extends Fragment {
             @Override
             public boolean onLongClick(View v) {
                 // Toast.makeText(getContext(), "LongClick sobre" + recyclerView.getChildPosition(v), Toast.LENGTH_SHORT).show();
-                OpcionesRutaDialogFragment dialog = new OpcionesRutaDialogFragment(data.get(recyclerView.getChildPosition(v)).getIdFacturaVenta(),data.get(recyclerView.getChildPosition(v)).getIdSucursal());
+                OpcionesRutaDialogFragment dialog = new OpcionesRutaDialogFragment(data.get(recyclerView.getChildPosition(v)).getIdFacturaVenta(),data.get(recyclerView.getChildPosition(v)).getIdSucursal(),data.get(recyclerView.getChildPosition(v)).getPos());
                 dialog.show(getFragmentManager(), "opcionesruta");
                 return true;
             }

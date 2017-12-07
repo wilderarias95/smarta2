@@ -55,4 +55,8 @@
     <string name="correo_compañia">Correo de compañia</string>
     <string name="telefono_compañia">Telefono de la compañia</string>
     <string name="version_app">Version 1.0</string>
+    <string name="diasCredito">Días Cred. :</string>
+    <string name="agotado">Producto agotado</string>
+    <string name="cant_no_valida">Cantidad no valida</string>
+    <string name="datosfaltantes">Complete todos los datos del usuario</string>
 </resources>

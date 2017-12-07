@@ -13,7 +13,8 @@ import java.util.stream.Stream;
 public class RutaData{
    private String estadoVenta,idCliente,nombreC,apellidoC,comentarioC,direccionC;
    private long descuento,diasCredito,idFacturaVenta,idSucursal,anoRegistroV,diaRegistroV,
-           mesRegistroV,idUsuario,pos,saldoCredito,valorVenta,telefonoC;
+           mesRegistroV,idUsuario,pos,saldoCredito,valorVenta;
+   private long telefonoC;
 
     public RutaData(){
 

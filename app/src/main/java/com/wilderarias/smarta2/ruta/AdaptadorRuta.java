@@ -42,7 +42,7 @@ public class AdaptadorRuta extends RecyclerView.Adapter<AdaptadorRuta.RutaViewHo
     public void onBindViewHolder(RutaViewHolder holder, int position) {
         RutaData item = data.get(position);
 
-        holder.tPosRuta.setText(String.valueOf(item.getPos()+1));
+        holder.tPosRuta.setText(String.valueOf(item.getPos()));
         holder.tNombre.setText(item.getNombreC()+" "+item.getApellidoC());
         holder.tIdent.setText(item.getIdCliente());
         holder.tFecha.setText(String.valueOf(item.getDiaRegistroV())+"/"+String.valueOf(item.getMesRegistroV())+"/"+String.valueOf(item.getAnoRegistroV()));

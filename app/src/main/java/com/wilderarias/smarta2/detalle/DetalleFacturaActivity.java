@@ -84,7 +84,7 @@ public class DetalleFacturaActivity extends AppCompatActivity {
                         rutaData=ventaSnapshot.getValue(RutaData.class);
                     }
                 }
-                tPosRuta.setText("" + (rutaData.getPos() + 1));
+                tPosRuta.setText("" + rutaData.getPos());
                 tSaldo.setText(String.valueOf(rutaData.getSaldoCredito()));
                 tFechaFactura.setText(rutaData.getDiaRegistroV() + "/" + rutaData.getMesRegistroV() + "/" + rutaData.getAnoRegistroV());
                 tValorVenta.setText(String.valueOf(rutaData.getValorVenta()));
@@ -115,8 +115,6 @@ public class DetalleFacturaActivity extends AppCompatActivity {
                             rutaData.setTelefonoC((long) clienteSnapshot.child("telefonoC").getValue());
                         }
                     }
-
-
                 tNombreC.setText(rutaData.getNombreC() + " " + rutaData.getApellidoC());
                 tIdent.setText(rutaData.getIdCliente());
                 tDireccion.setText(rutaData.getDireccionC());
@@ -170,37 +168,6 @@ public class DetalleFacturaActivity extends AppCompatActivity {
         return true;
     }
 
-  /* @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            myRef = firebaseDatabase.getReference().child("cliente");
-            myRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    for (DataSnapshot clienteSnapshot : dataSnapshot.getChildren()) {
-                        String idUsu = clienteSnapshot.child("idCliente").getValue().toString();
-                        if (Objects.equals(idUsu, rutaData.getIdCliente())) {
-                            rutaData.setDireccionC(clienteSnapshot.child("direccionC").getValue().toString());
-                            rutaData.setTelefonoC((long) clienteSnapshot.child("telefonoC").getValue());
-                            rutaData.setComentarioC(clienteSnapshot.child("comentarioC").getValue().toString());
-                        }
-                    }
-                    tDireccion.setText(rutaData.getDireccionC());
-                    tTelefono.setText(String.valueOf(rutaData.getTelefonoC()));
-                    tComentario.setText(rutaData.getComentarioC());
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        }
-
-    }*/
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -236,6 +203,8 @@ public class DetalleFacturaActivity extends AppCompatActivity {
                 return true;
             case R.id.nuevaVenta:
                 intent = new Intent(DetalleFacturaActivity.this, IngresarVentaActivity.class);
+                intent.putExtra("posRuta",rutaData.getPos());
+                intent.putExtra("idSucursal",rutaData.getIdSucursal());
                 startActivity(intent);
                 return true;
             case R.id.ingresarAbono:

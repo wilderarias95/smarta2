@@ -21,10 +21,12 @@ import com.wilderarias.smarta2.R;
 public class OpcionesRutaDialogFragment extends DialogFragment {
 
     private long idFactura,idSucursal;
+    private long pos;
     @SuppressLint("ValidFragment")
-    public OpcionesRutaDialogFragment(long idFactura,long idSucursal) {
+    public OpcionesRutaDialogFragment(long idFactura,long idSucursal,long pos) {
         this.idFactura=idFactura;
         this.idSucursal=idSucursal;
+        this.pos=pos;
     }
 
     public OpcionesRutaDialogFragment(){
@@ -55,6 +57,8 @@ public class OpcionesRutaDialogFragment extends DialogFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), IngresarVentaActivity.class);
+                intent.putExtra("posRuta",pos);
+                intent.putExtra("idSucursal",idSucursal);
                 startActivity(intent);
                 dismiss();
             }
